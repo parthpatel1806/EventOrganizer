@@ -1,10 +1,13 @@
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
-import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import DashboardScreen from '../DashboardScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import EventDetailScreen from '../screens/EventDetailScreen';
+import { Event } from '../services/events';
 
 type RootStackParamList = {
   SignIn: undefined;
@@ -41,6 +44,5 @@ function AppNavigator() {
   );
 }
 
-// Export the types for use in screens
 export type { RootStackParamList, HomeTabParamList };
 export default AppNavigator;

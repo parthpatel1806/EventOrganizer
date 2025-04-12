@@ -1,22 +1,25 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "react-native",
-    "lib": ["es2017"],
-    "module": "commonjs",
+    "lib": ["es2017", "dom"],
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@screens/*": ["./src/screens/*"],
-      "@services/*": ["./src/services/*"],
-      "@utils/*": ["./src/utils/*"]
-    }
+      "@components/*": ["components/*"],
+      "@screens/*": ["screens/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@navigation/*": ["navigation/*"],
+      "@context/*": ["context/*"]
+    },
+    "types": ["jest", "react-native", "react"]
   },
   "exclude": [
     "node_modules",
