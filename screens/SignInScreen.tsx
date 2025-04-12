@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
-import { handleError } from '../utils/errorHandler';
 import { TextInput, Button } from 'react-native-paper';
 import { signInWithEmailAndPassword } from '../services/auth';
 import { validateEmail, validatePassword } from '../utils/validators';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
+// Define the navigation prop type
 type SignInScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'SignIn'
@@ -22,11 +22,13 @@ export default function SignInScreen({ navigation }: Props) {
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {
+    // Validate email
     if (!validateEmail(email)) {
       Alert.alert('Invalid Email', 'Please enter a valid email address');
       return;
     }
 
+    // Validate password
     if (!validatePassword(password)) {
       Alert.alert(
         'Invalid Password',
@@ -37,9 +39,11 @@ export default function SignInScreen({ navigation }: Props) {
 
     setLoading(true);
     try {
+      // Attempt to sign in with email and password
       await signInWithEmailAndPassword(email, password);
     } catch (error) {
-      handleError(error, 'auth');
+      console.error('Sign In Error: ', error);
+      Alert.alert('Sign In Failed', 'Please check your credentials');
     } finally {
       setLoading(false);
     }

@@ -1,9 +1,8 @@
-// firebaseConfig.ts
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
-// Replace these values with your actual Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDgK8f7lEpxJ-d7YIMatCAToa0iJY1yFeo",
   authDomain: "eventorganise.firebaseapp.com",
@@ -13,11 +12,9 @@ const firebaseConfig = {
   appId: "1:57084760453:web:ea6332efb1cdcdce11b4ec"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase services
-export const auth = getAuth(app);
+export const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 export const db = getFirestore(app);
-
-// Optional: Add any additional Firebase services you need

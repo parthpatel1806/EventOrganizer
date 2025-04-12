@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, Text } from 'react-native';
 import { Button, Appbar, TextInput } from 'react-native-paper';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -109,6 +109,7 @@ export default function EventDetailScreen({ route, navigation }: Props) {
         <Appbar.Content
           title={event.id ? 'Edit Event' : 'Create Event'}
         />
+
       </Appbar.Header>
       <ScrollView contentContainerStyle={styles.content}>
         <TextInput
